@@ -20,7 +20,7 @@ const NavItem = ({ category, handleOpen, isAnyOpen, isOpen }: NavItemProps) => {
       <div className="relative flex items-center">
         <Button
           variant={isOpen ? "secondary" : "ghost"}
-          className="gap-1.5 border-slate-400 text-base rounded-lg"
+          className="gap-1.5 border-slate-400 font-medium text-base "
           onClick={handleOpen}
         >
           {category.label}
