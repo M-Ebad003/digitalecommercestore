@@ -6,7 +6,7 @@ import NavItems from "./NavItems";
 
 const Navbar = () => {
   return (
-    <div className="bg-white sticky z-50 top-0 inset-x-0 h-16">
+    <div className="bg-white sticky z-50 top-1 inset-x-0 h-16">
       <div className="relative bg-white">
         <MaxWidth>
           <div className="border-b border-gray-300">
