@@ -24,11 +24,11 @@ const page = () => {
   const form = useForm<z.infer<typeof signUpSchema>>({
     resolver: zodResolver(signUpSchema),
   });
+  const { mutate } = trpc.auth.createPayloadUser.useMutation({});
 
-  const {data} = trpc.anyApiRoute.useQuery()
-  console.log(data)
-
-  const onSubmit = (data : z.infer<typeof signUpSchema>) => {};
+  const onSubmit = (data: z.infer<typeof signUpSchema>) => {
+    mutate(data);
+  };
   return (
     <>
       <div className="flex justify-center items-center min-h-screen bg-gray-100">
@@ -78,6 +78,7 @@ const page = () => {
                     <FormLabel>Password</FormLabel>
                     <FormControl>
                       <Input
+                        type="password"
                         className={cn({
                           "focus-visible:ring-red-500": true,
                         })}
@@ -90,7 +91,9 @@ const page = () => {
                 )}
               />
               <div className="flex items-center justify-center">
-              <Button className="w-full" type="submit">Sign up</Button>
+                <Button className="w-full" type="submit">
+                  Sign up
+                </Button>
               </div>
             </form>
           </Form>

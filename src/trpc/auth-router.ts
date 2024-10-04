@@ -1,6 +1,6 @@
-import { signUpSchema } from "@/schemas/signupSchema";
+import { signUpSchema } from "../schemas/signupSchema";
 import { publicProcedure, router } from "./trpc";
-import { getPayLoadClient } from "@/get-payload";
+import { getPayLoadClient } from "../get-payload";
 import { TRPCError } from "@trpc/server";
 
 export const authRouter = router({
@@ -21,10 +21,13 @@ export const authRouter = router({
       if (users.length !== 0) throw new TRPCError({ code: "CONFLICT" });
 
       await payload.create({
-        collection: 'users',
+        collection: "users",
         data: {
-            
-        }
-      })
+          email,
+          password,
+          role: "user",
+        },
+      });
+      return { success: true, sentToEmail: email };
     }),
 });
