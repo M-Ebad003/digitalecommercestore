@@ -9,7 +9,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -19,11 +18,15 @@ import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { signUpSchema } from "@/schemas/signupSchema";
+import { trpc } from "@/trpc/client";
 
 const page = () => {
   const form = useForm<z.infer<typeof signUpSchema>>({
     resolver: zodResolver(signUpSchema),
   });
+
+  const {data} = trpc.anyApiRoute.useQuery()
+  console.log(data)
 
   const onSubmit = (data : z.infer<typeof signUpSchema>) => {};
   return (
