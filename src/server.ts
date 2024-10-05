@@ -1,5 +1,5 @@
 import express from "express";
-import { getPayLoadClient } from "./get-payload";
+import { getPayloadClient } from "./get-payload";
 import { nextApp, nextHandler } from "./next-utils";
 import * as trpcExpress from "@trpc/server/adapters/express";
 import { appRouter } from "./trpc";
@@ -16,7 +16,7 @@ const createContext = ({
 });
 
 const start = async () => {
-  const payload = await getPayLoadClient({
+  const payload = await getPayloadClient({
     initOptions: {
       express: app,
       onInit: async (cms) => {

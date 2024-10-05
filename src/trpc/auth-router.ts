@@ -1,6 +1,6 @@
 import { signUpSchema } from "../schemas/signupSchema";
 import { publicProcedure, router } from "./trpc";
-import { getPayLoadClient } from "../get-payload";
+import { getPayloadClient } from "../get-payload";
 import { TRPCError } from "@trpc/server";
 
 export const authRouter = router({
@@ -8,7 +8,7 @@ export const authRouter = router({
     .input(signUpSchema)
     .mutation(async ({ input }) => {
       const { email, password } = input;
-      const payload = await getPayLoadClient();
+      const payload = await getPayloadClient();
 
       const { docs: users } = await payload.find({
         collection: "users",
