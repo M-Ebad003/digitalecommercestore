@@ -44,7 +44,7 @@ export const getPayLoadClient = async ({
     cached.promise = payload.init({
       email: {
         transport: transporter,
-        fromAddress: 'hello@joshtriedcoding.com',
+        fromAddress: "hello@joshtriedcoding.com",
         fromName: "Digital Dune",
       },
       secret: process.env.PAYLOAD_SECRET,
@@ -55,6 +55,7 @@ export const getPayLoadClient = async ({
   try {
     cached.client = await cached.promise;
   } catch (error: unknown) {
+    console.log('error in client',error)
     cached.promise = null;
     throw error;
   }

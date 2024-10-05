@@ -23,6 +23,10 @@ import { trpc } from "@/trpc/client";
 const page = () => {
   const form = useForm<z.infer<typeof signUpSchema>>({
     resolver: zodResolver(signUpSchema),
+    defaultValues: {
+      email: "",
+      password:"",
+    }
   });
   const { mutate } = trpc.auth.createPayloadUser.useMutation({});
 
